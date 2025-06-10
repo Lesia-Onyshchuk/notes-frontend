@@ -1,3 +1,6 @@
+import { createSlice } from "@reduxjs/toolkit";
+import { addNote, deleteNote } from "./operations";
+
 const initialState = { notes: [], loading: false, error: null };
 
 const slice = createSlice({
@@ -8,7 +11,7 @@ const slice = createSlice({
       .addCase(addNote.fulfilled, (state, action) => {
         state.notes.push(action.payload);
       })
-      .addCase(DeleteNote.fulfilled, (state, action) => {
+      .addCase(deleteNote.fulfilled, (state, action) => {
         state.notes = state.notes.filter((note) => note.id !== action.payload);
       });
   },
